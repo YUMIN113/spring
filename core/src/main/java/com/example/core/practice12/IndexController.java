@@ -28,12 +28,16 @@ public class IndexController {
 		System.out.println("memberReg() :: address=" + member.getAddress());
 		
 		String str = "";
-		for(int i = 0; i < member.getFavorite().size(); i++) {
-			str += member.getFavorite().get(i) + ",";
+		if(member.getFavorite() == null) {
+			System.out.print("memberReg() :: favorite=" + "null");
+		} else {
+			for(int i = 0; i < member.getFavorite().size(); i++) {
+				str += member.getFavorite().get(i) + ",";
+			}
+			str = str.substring(0, str.length() - 1);
+			System.out.print("memberReg() :: favorite=" + str);
 		}
-		str = str.substring(0, str.length() - 1);
-		System.out.print("memberReg() :: favorite=" + str);
-		
+	
 		return "practice12/registerSuccess";
 
 	}
