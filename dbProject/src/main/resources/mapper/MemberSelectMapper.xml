@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.example.dbProject.practice01.SelectMemberMapper">
+
+    <select id="selectMemberById" parameterType="string" resultType="com.example.dbProject.practice01.MemberDTO"> 
+    	select	id, password, name, age, sex, decode(sex,'F','여자','M','남자') as sexName
+    	from 	member
+    	where 	id = #{id}
+    </select>
+    
+</mapper>
