@@ -10,4 +10,28 @@
     	where 	id = #{id}
     </select>
     
+    <select id="selectMember" parameterType="map" resultType="com.example.dbProject.practice01.MemberDTO"> 
+    	select	id, password, name, age, sex, decode(sex,'F','여자','M','남자') as sexName
+    	from 	member
+    	where 	id = #{id}
+    	and     password = #{password}
+    </select>
+    
+    <select id="selectMemberByNameLike" parameterType="string" resultType="com.example.dbProject.practice01.MemberDTO"> 
+    	select	id, password, name, age, sex, decode(sex,'F','여자','M','남자') as sexName
+    	from 	member
+    	where 	name like '%${name}%'
+    </select>
+    
+    <select id="selectMemberBySex" parameterType="char" resultType="com.example.dbProject.practice01.MemberDTO"> 
+    	select	id, password, name, age, sex, decode(sex,'F','여자','M','남자') as sexName
+    	from 	member
+    	where 	sex = #{sex}
+    </select>
+    
+    <select id="selectMemberAll" resultType="com.example.dbProject.practice01.MemberDTO"> 
+    	select	id, password, name, age, sex, decode(sex,'F','여자','M','남자') as sexName
+    	from 	member
+    </select>
+
 </mapper>

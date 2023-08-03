@@ -1,0 +1,22 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.example.dbProject.practice02.InsertMemberMapper">
+
+	<insert id="insertMemberByDTO" parameterType="com.example.dbProject.practice01.MemberDTO">
+		insert into member (id, password, name, age, sex) 
+	   	values (#{id}, #{password}, #{name}, #{age}, #{sex})
+	</insert>
+	
+	<insert id="insertMemberByDTOWithResult" parameterType="com.example.dbProject.practice01.MemberDTO">
+		insert into member (id, password, name, age, sex) 
+	   	values (#{id}, #{password}, #{name}, #{age}, #{sex})
+	</insert>
+	
+	<insert id="insertMemberByHashMap" parameterType="map">
+		insert into member (id, password, name, age, sex) 
+	   	values (#{id}, #{password}, #{name}, #{age}, #{sex})
+	</insert>
+	
+</mapper>
