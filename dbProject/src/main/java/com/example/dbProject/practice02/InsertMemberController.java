@@ -2,7 +2,6 @@ package com.example.dbProject.practice02;
 
 import java.util.HashMap;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,12 +17,14 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class InsertMemberController {
 	
-	@Autowired
-	private InsertMemberService insertMemberService;
+	private final InsertMemberService insertMemberService;
+	private final SelectMemberService selectMemberService;
 	
-	@Autowired
-	private SelectMemberService selectMemberService;
-	
+	public InsertMemberController(InsertMemberService insertMemberService, SelectMemberService selectMemberService) {
+		this.insertMemberService = insertMemberService;
+		this.selectMemberService = selectMemberService;
+	}
+
 	@RequestMapping("/insert/insertMemberForm")
 	public String insertMemberForm() {
 		return "practice02/insertMemberForm";

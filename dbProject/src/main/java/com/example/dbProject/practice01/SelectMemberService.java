@@ -13,4 +13,5 @@ public interface SelectMemberService {
 	public List<MemberDTO> selectMemberBySex(char sex);
 	
 	public List<MemberDTO> selectMemberAll();
-	}
+	
+}

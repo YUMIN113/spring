@@ -1,0 +1,36 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.example.dbProject.practice05.DynamicIfMapper">
+
+	<select id="selectCustomerList" parameterType="java.util.HashMap" resultType="com.example.dbProject.practice05.CustomerDTO">
+	select		decode(gb,'R','정규회원','F','무료회원') as gb, 
+					id, 
+					name,  
+					age, 
+					decode(sex,'F','여자','M','남자') as sex, 
+					address, 
+					to_char(regdate,'yyyy.mm.dd') as regdate
+	from 		customer
+	where		gb='R'    
+	
+	<if test="id != null and  id !='' ">
+    	and	id like '%${id}%'
+ 	</if>
+ 	
+	<if test="name != null and  name !='' ">
+    	and	name like '%${name}%'
+ 	</if>
+ 	
+  	<if test="sex != null and  sex !='' ">
+    	and	sex = #{sex}	
+ 	</if>
+ 	
+ 	 <if test="address != null and  address !='' ">
+    	and	address = #{address}
+ 	</if>
+ 	
+	</select>
+	
+</mapper>

@@ -55,7 +55,7 @@
 			<td>${member.age}</td>
 			<td>${member.sex}</td>
 			<td>${member.sexName}</td>
-			<td><button onclick="location.href='/delete/deleteMember?id=${member?.id}'">삭제</button></td>
+			<td><button onclick="location.href='/delete/deleteMember?id=${member.id}'">삭제</button></td>
 		</tr>
 	</c:forEach>
 </table>

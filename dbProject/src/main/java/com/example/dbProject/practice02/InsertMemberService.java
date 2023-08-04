@@ -11,6 +11,5 @@ public interface InsertMemberService {
 	public void insertMemberByDTO(MemberDTO memberDTO);
 	
 	public void insertMemberByHashMap(HashMap<String, String> map);
-	
-	
+
 }

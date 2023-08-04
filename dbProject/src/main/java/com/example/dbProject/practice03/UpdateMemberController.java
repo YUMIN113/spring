@@ -1,8 +1,8 @@
 package com.example.dbProject.practice03;
 
 import java.util.HashMap;
+import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +14,13 @@ import com.example.dbProject.practice01.SelectMemberService;
 @Controller
 public class UpdateMemberController {
 
-	@Autowired
-	private SelectMemberService selectMemberSerivce;
+	private final SelectMemberService selectMemberSerivce;
+	private final UpdateMemberService updateMemberService;
 	
-	@Autowired
-	private UpdateMemberService updateMemberService;
+	public UpdateMemberController(SelectMemberService selectMemberSerivce, UpdateMemberService updateMemberService) {
+		this.selectMemberSerivce = selectMemberSerivce;
+		this.updateMemberService = updateMemberService;
+	}
 
 	@RequestMapping("/update/updateMemberByIdForm")
 	public String updateMemberByIdForm() {
@@ -36,9 +38,9 @@ public class UpdateMemberController {
 	@RequestMapping("/update/updateMember")
 	public String updateMember(@RequestParam HashMap<String, String> paramMap, Model model) {
 		updateMemberService.updateMember(paramMap);
-		MemberDTO member = selectMemberSerivce.selectMemberById(paramMap.get("id"));
-		model.addAttribute("member", member);
-		return "practice03/updateMemberByIdForm";
+		List<MemberDTO> memberList = selectMemberSerivce.selectMemberAll();
+		model.addAttribute("memberList", memberList);
+		return "practice01/selectMemberAll";
 	}
 	
 }
